@@ -1,4 +1,6 @@
 <?php
+
+include 'connect.php';
 if(isset($message)){
    foreach($message as $message){
       echo '
@@ -10,6 +12,9 @@ if(isset($message)){
    }
 }
 ?>
+
+
+<link rel="stylesheet" href="../css/style.css">
 
 <header class="header">
 
