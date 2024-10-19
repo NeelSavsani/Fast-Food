@@ -37,10 +37,15 @@ if(isset($_POST['submit'])){
          $message[] = 'please add your address!';
       }else{
          
-         $insert_order = "INSERT INTO `orders`('user_id', 'name', 'number', 'email', 'method', 'address','total_products',total_price,'palced_on','payment_status') VALUES($user_id, $name, $number, $email, $method, $address,$total_products,$total_price)";
-         $conn->exec($insert_order);
-         echo $user_id, $name, $number, $email, $method,$total_products,$total_price;
-        // $insert_order->execute([$user_id, $name, $number, $email, $method, $address, $total_products, $total_price,$placed_on,$payment_status]);
+      //    $insert_order = "INSERT INTO `orders`('user_id', 'name', 'number', 'email', 'method', 'address','total_products',total_price,'palced_on','payment_status') VALUES($user_id, $name, $number, $email, $method, $address,$total_products,$total_price)";
+      //    $conn->exec($insert_order);
+      //    echo $user_id, $name, $number, $email, $method,$total_products,$total_price;
+      //   // $insert_order->execute([$user_id, $name, $number, $email, $method, $address, $total_products, $total_price,$placed_on,$payment_status]);
+      $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name, number, email, method, address, total_products, total_price) VALUES(?,?,?,?,?,?,?,?)");
+         $insert_order->execute([$user_id, $name, $number, $email, $method, $address, $total_products, $total_price]);
+
+         $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
+         $delete_cart->execute([$user_id]);
 
          $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
          $delete_cart->execute([$user_id]);
