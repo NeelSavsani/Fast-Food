@@ -1,3 +1,18 @@
 1) food_db.sql:
 line24-line25:
 query to create database 'food_db' only if it is not created
+
+2) user_header.php:
+line3:
+inserted query to connect to connect.php
+
+line15:
+inserted stylesheet
+
+
+3) admin_header.php:
+line3:
+inserted query to connect to connect.php
+
+line16:
+inserted stylesheet
