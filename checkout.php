@@ -103,7 +103,8 @@ if(isset($_POST['submit'])){
          $select_cart->execute([$user_id]);
          if($select_cart->rowCount() > 0){
             while($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)){
-               $cart_items[] = $fetch_cart['name'].' ('.$fetch_cart['price'].' x '. $fetch_cart['quantity'].') - ';
+               $indi_price = $fetch_cart['price']*$fetch_cart['quantity'];
+               $cart_items[] = "<br>" .$fetch_cart['name'].' ('.$fetch_cart['price'].' x '. $fetch_cart['quantity'].') : ₹'.$indi_price;
                $total_products = implode($cart_items);
                $grand_total += ($fetch_cart['price'] * $fetch_cart['quantity']);
       ?>
