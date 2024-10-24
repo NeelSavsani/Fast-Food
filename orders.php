@@ -55,15 +55,26 @@ if(isset($_SESSION['user_id'])){
             while($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)){
    ?>
    <div class="box">
-      <p>placed on : <span><?= $fetch_orders['placed_on']; ?></span></p>
-      <p>name : <span><?= $fetch_orders['name']; ?></span></p>
-      <p>email : <span><?= $fetch_orders['email']; ?></span></p>
-      <p>number : <span><?= $fetch_orders['number']; ?></span></p>
-      <p>address : <span><?= $fetch_orders['address']; ?></span></p>
-      <p>payment method : <span><?= $fetch_orders['method']; ?></span></p>
-      <p>your orders : <span><?= $fetch_orders['total_products']; ?></span></p>
-      <p>total price : <span>$<?= $fetch_orders['total_price']; ?>/-</span></p>
-      <p> payment status : <span style="color:<?php if($fetch_orders['payment_status'] == 'pending'){ echo 'red'; }else{ echo 'green'; }; ?>"><?= $fetch_orders['payment_status']; ?></span> </p>
+      <center><h1 style="font-size: 30px;">TAX INVOICE</h1></center>
+      <div class="bill_header" style="border-bottom: 3px solid #10455b; padding: 5% 0; display: flex; align-items: space-between;">
+         <div class="left" style="font-size: 15px; width: 200px;">
+            Bill No: 123-456 <br>
+            Order Status: <span style="color:<?php if($fetch_orders['payment_status'] == 'pending'){ echo 'red'; }else{ echo 'green'; }; ?>"><?= $fetch_orders['payment_status']; ?></span>
+         </div>
+         <div class="right" style="position: relative; font-size: 15px; left: 18%;">
+            Bill-Date: 24/10/2024 (07:39PM) <br>
+            Total Amount: <span>₹<?=$fetch_orders['total_price'];?>/-</span>
+         </div>
+      </div>
+      <p>Placed on : <span><?= $fetch_orders['placed_on']; ?></span></p>
+      <p>Name : <span><?= $fetch_orders['name']; ?></span></p>
+      <p>Email : <span><?= $fetch_orders['email']; ?></span></p>
+      <p>Number : <span><?= $fetch_orders['number']; ?></span></p>
+      <p>Address : <span><?= $fetch_orders['address']; ?></span></p>
+      <p>Payment method : <span><?= $fetch_orders['method']; ?></span></p>
+      <p>Your orders : <span><?= $fetch_orders['total_products']; ?></span></p>
+      <p>Total price : <span>₹<?= $fetch_orders['total_price']; ?>/-</span></p>
+      <p>Payment status : <span style="color:<?php if($fetch_orders['payment_status'] == 'pending'){ echo 'red'; }else{ echo 'green'; }; ?>"><?= $fetch_orders['payment_status']; ?></span> </p>
    </div>
    <?php
       }
